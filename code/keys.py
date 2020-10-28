@@ -152,6 +152,8 @@ symbol_key_words = {
     "right square": "]",
     "slash": "/",
     "backslash": "\\",
+    "whack": "\\",
+    "quack": "\\",  # "whack"
     "minus": "-",
     "dash": "-",
     "equals": "=",
