@@ -15,8 +15,9 @@ action(user.messaging_unread_previous): key(alt-shift-up)
 action(user.messaging_unread_next): key(alt-shift-down)
     # Navigation
 (move | next) focus: key(ctrl-`)
-[next] (section | zone): key(f6)
-(previous | last) (section | zone): key(shift-f6)
+# TODO: need for fn press depends on keyboard settings
+[next] (section | zone): key(fn-f6)
+(previous | last) (section | zone): key(shift-fn-f6)
 (slack | lack) [direct] messages: key(cmd-shift-k)
 (slack | lack) threads: key(cmd-shift-t)
 (slack | lack) (history [next] | back | backward): key(cmd-[)
