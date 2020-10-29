@@ -1,4 +1,5 @@
 go <user.arrow_keys>: key(arrow_keys)
+(function | funk) <user.number_key>: key("fn-f{number_key}")
 <user.letter>: key(letter)
 (ship | uppercase) <user.letters> [(lowercase | sunk)]: 
     user.insert_formatted(letters, "ALL_CAPS")
