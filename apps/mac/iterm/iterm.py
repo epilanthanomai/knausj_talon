@@ -1,5 +1,7 @@
-from talon import Context, Module, actions, imgui, settings, ui
 import os
+import re
+
+from talon import Context, Module, actions, imgui, settings, ui
 
 ctx = Context()
 ctx.matches = r"""
@@ -84,3 +86,22 @@ class user_actions:
         actions.key("ctrl-c")
         actions.insert("y")
         actions.key("enter")
+
+
+# Title is heavily customized in vimrc and tmux.conf. iTerm2 also adds extra
+# text e.g. "1. " at the beginning, and I'm not sure why. Hack around the
+# complicated with regex :'(
+TITLE_RE = re.compile(r'(tmux:)?vim:(?P<filename>.*)')
+
+@ctx.action_class("win")
+class win_actions:
+    def filename():
+        title = actions.win.title()
+        match = TITLE_RE.search(title)
+        if match:
+            return match.group('filename')
+
+    def file_ext():
+        filename = actions.win.filename()
+        if filename:
+            return filename.split(".")[-1]
