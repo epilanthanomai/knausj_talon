@@ -1,9 +1,14 @@
 import re
 from contextlib import contextmanager
 
-from talon import Module, actions
+from talon import Context, Module, actions
 
+ctx = Context()
 mod = Module()
+
+ctx.matches = r"""
+title: /vim/i
+"""
 
 # FIXME: Copied from iterm2.py. How do we abstract this?
 TITLE_RE = re.compile(r'(tmux:)?vim:(?P<mode>[A-Za-z]+):(?P<filename>.*)')
@@ -41,6 +46,10 @@ def edit_mode(target_mode):
                 actions.key(from_target)
 
 
+def normal_mode():
+    return edit_mode('n')
+
+
 @mod.action_class
 class vim_actions:
     def vim_edit_mode():
@@ -53,6 +62,45 @@ class vim_actions:
 
     def vim_window_switch(arrow_key: str):
         """Move window focus"""
-        with edit_mode('n'):
+        with normal_mode():
             actions.key("ctrl-w")
             actions.key(arrow_key)
+
+
+@ctx.action_class("edit")
+class edit_actions:
+    def word_left():
+        with normal_mode():
+            actions.key('b')
+
+    def word_right():
+        with normal_mode():
+            actions.key('w')
+
+    def line_start():
+        with normal_mode():
+            actions.key('^')
+
+    def line_end():
+        with normal_mode():
+            actions.key('$')
+        # If we were in insert mode, then $ will put us just before the last
+        # character
+        actions.key('right')
+
+    def file_end():
+        with normal_mode():
+            actions.key('G')
+
+    def file_start():
+        with normal_mode():
+            actions.key('g')
+            actions.key('g')
+
+    def page_down():
+        with normal_mode():
+            actions.key('ctrl-u')
+
+    def page_up():
+        with normal_mode():
+            actions.key('ctrl-d')
