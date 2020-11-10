@@ -91,7 +91,7 @@ class user_actions:
 # Title is heavily customized in vimrc and tmux.conf. iTerm2 also adds extra
 # text e.g. "1. " at the beginning, and I'm not sure why. Hack around the
 # complicated with regex :'(
-TITLE_RE = re.compile(r'(tmux:)?vim:(?P<filename>.*)')
+TITLE_RE = re.compile(r'(tmux:)?vim:(?P<mode>[A-Za-z]+):(?P<filename>.*)')
 
 @ctx.action_class("win")
 class win_actions:
