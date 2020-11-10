@@ -1,55 +1,57 @@
-os: linux
 tag: user.tmux
 -
-mux: "tmux "
+muck: "tmux "
 
 #session management
-mux new session:
+muck session new:
     insert('tmux new ')
-mux sessions:
-    key(ctrl-b)
+muck sessions:
+    key(ctrl-a)
     key(s)
-mux name session:
-    key(ctrl-b)
+muck session rename:
+    key(ctrl-a)
     key($)
-mux kill session:
+muck kill session:
     insert('tmux kill-session -t ')
 #window management
-mux new window:
-    key(ctrl-b)
+muck win new:
+    key(ctrl-a)
     key(c)
-mux window <number>:
-    key(ctrl-b )
+muck win <number>:
+    key(ctrl-a )
     key('{number}')
-mux previous window:
-    key(ctrl-b)
+muck win last:
+    key(ctrl-a)
     key(p)
-mux next window:
-    key(ctrl-b)
+muck win next:
+    key(ctrl-a)
     key(n)
-mux rename window:
-    key(ctrl-b)
+muck win rename:
+    key(ctrl-a)
     key(,)
-mux close window:
-    key(ctrl-b)
+muck win close:
+    key(ctrl-a)
     key(&)
 #pane management
-mux split horizontal:
-    key(ctrl-b)
-    key(%)
-mux split vertical:
-    key(ctrl-b)
-    key(")
-mux next pane:
-    key(ctrl-b)
+muck split horizontal:
+    key(ctrl-a)
+    key(|)
+muck split vertical:
+    key(ctrl-a)
+    key(-)
+muck pane next:
+    key(ctrl-a)
     key(o)
-mux move <user.arrow_key>:
-    key(ctrl-b)
+muck pane <user.arrow_key>:
+    key(ctrl-a)
     key(arrow_key)
-mux close pane:
-    key(ctrl-b)
+muck pane close:
+    key(ctrl-a)
     key(x)
 #Say a number right after this command, to switch to pane
-mux pane numbers:
-    key(ctrl-b)
+muck pane numbers:
+    key(ctrl-a)
     key(q)
+muck buffer:
+    key(ctrl-a)
+    key([)
