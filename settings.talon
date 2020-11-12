@@ -28,4 +28,4 @@ settings():
     user.command_history_size = 50
 	
 # uncomment tag to enable mouse grid
-# tag(): user.mouse_grid_enabled
+tag(): user.mouse_grid_enabled
