@@ -29,10 +29,10 @@ select left <number_small> words:
 select right <number_small> words:
     edit.extend_word_right()
     repeat(number_small - 1)
-select left <number_small> characters:
+select left <number_small> cares:
     edit.extend_left()
     repeat(number_small - 1)
-select right <number_small> characters:
+select right <number_small> cares:
     edit.extend_right()
     repeat(number_small - 1)
 clear left <number_small> words:
@@ -43,11 +43,11 @@ clear right <number_small> words:
     edit.extend_word_right()
     repeat(number_small - 1)
     edit.delete()
-clear left <number_small> characters:
+clear left <number_small> cares:
     edit.extend_left()
     repeat(number_small - 1)
     edit.delete()
-clear right <number_small> characters:
+clear right <number_small> cares:
     edit.extend_right()
     repeat(number_small - 1)
     edit.delete()
@@ -62,8 +62,8 @@ formatted <user.format_text>:
 scratch that: user.clear_last_utterance()
 scratch selection: edit.delete()
 select that: user.select_last_utterance()
-spell that <user.letters>: auto_insert(letters)
-spell that <user.formatters> <user.letters>:
+spell <user.letters>: auto_insert(letters)
+spell <user.formatters> <user.letters>:
     result = user.formatted_text(letters, formatters)
     user.auto_format_pause()
     auto_insert(result)
