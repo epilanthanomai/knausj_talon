@@ -7,6 +7,7 @@ enter: auto_insert("new-line")
 cap <user.text>:
     result = user.formatted_text(user.text, "CAPITALIZE_FIRST_WORD")
     auto_insert(result)
+number <user.number_string>: "{number_string}"
 #navigation
 go up <number_small> lines:
     edit.up()
