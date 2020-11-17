@@ -28,17 +28,17 @@ go line start:
 go line end:
     edit.line_end()
 
-go way left:
+go far left:
     edit.line_start()
     edit.line_start()
 
-go way right:
+go far right:
     edit.line_end()
 
-go way down:
+go far down:
     edit.file_end()
 
-go way up:
+go far up:
     edit.file_start()
 
 go page down:
@@ -75,16 +75,16 @@ select word left:
 select word right:
     edit.extend_word_right()
 
-select way left:
+select far left:
     edit.extend_line_start()
 
-select way right:
+select far right:
     edit.extend_line_end()
 
-select way up:
+select far up:
     edit.extend_file_start()
 
-select way down:
+select far down:
     edit.extend_file_end()
 
 # editing
@@ -123,19 +123,19 @@ clear word right:
     edit.extend_word_right()
     edit.delete()
 
-clear way left:
+clear far left:
     edit.extend_line_start()
     edit.delete()
 
-clear way right:
+clear far right:
     edit.extend_line_end()
     edit.delete()
 
-clear way up:
+clear far up:
     edit.extend_file_start()
     edit.delete()
 
-clear way down:
+clear far down:
     edit.extend_file_end()
     edit.delete()
 
