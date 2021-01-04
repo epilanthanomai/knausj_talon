@@ -125,6 +125,9 @@ class Actions:
             actions.mode.disable("user.{}".format(lang))
         # app.notify("Cleared language modes")
 
+    def code_shebang():
+        """Inserts a unix shebang (#! statement)"""
+
     def code_operator_indirection():
         """code_operator_indirection"""
 

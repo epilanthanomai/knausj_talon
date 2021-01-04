@@ -12,6 +12,7 @@ settings():
     user.code_private_variable_formatter = "SNAKE_CASE"
     user.code_protected_variable_formatter = "SNAKE_CASE"
     user.code_public_variable_formatter = "SNAKE_CASE"
+action(user.code_shebang): "#!/usr/bin/env python3\n"
 action(user.code_operator_indirection): ""
 action(user.code_operator_address_of): ""
 action(user.code_operator_structure_dereference): ""
@@ -99,6 +100,7 @@ state (def | deaf | deft): "def "
 self taught: "self."
 pie test: "pytest"
 state past: "pass"
+state yield: "yield "
 
 ^funky <user.text>$: user.code_private_function(text)
 #^pro funky <user.text>$: user.code_protected_function(text)
@@ -126,4 +128,14 @@ dock returns type {user.python_type_list}:
 toggle imports: user.code_toggle_libraries()
 import <user.code_libraries>:
     user.code_insert_library(code_libraries, "")
-    key(end enter)
+    key(enter)
+^from <user.code_libraries> import <user.text>:
+    insert("from ")
+    insert(code_libraries)
+    insert(" import ")
+    user.code_public_function_formatter(text)
+  
+
+
+state def main: "def main():\n"
+if name is main: "if __name__ == \"__main__\":\n"

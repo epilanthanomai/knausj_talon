@@ -12,14 +12,24 @@ and code.language: python
 ctx.lists["user.code_functions"] = {
     "enumerate": "enumerate",
     "integer": "int",
+    "iter": "iter",
     "length": "len",
     "list": "list",
+    "main": "main",
     "print": "print",
     "range": "range",
     "set": "set",
     "split": "split",
     "string": "str",
     "update": "update",
+}
+
+ctx.lists["user.code_libraries"] = {
+    "collections": "collections",
+    "funk tools": "functools",
+    "iter tools": "itertools",
+    "operator": "operator",
+    "sys": "sys",
 }
 
 """a set of fields used in python docstrings that will follow the
@@ -139,6 +149,9 @@ ctx.lists["user.python_exception"] = {
 
 @ctx.action_class("user")
 class user_actions:
+    def code_insert_library(text: str, selection: str):
+        actions.insert("import " + text)
+
     def code_insert_function(text: str, selection: str):
         if selection:
             text = text + "({})".format(selection)

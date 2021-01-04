@@ -31,28 +31,31 @@ empty escaped string:
 (inside parens | args):
 	insert("()")
 	key(left)
-inside (squares | list): 
-	insert("[]") 
+(inside (squares | list) | squares):
+	insert("[]")
 	key(left)
-inside (bracket | braces): 
-	insert("{}") 
+(inside (bracket | braces | curlies) | curlies):
+	insert("{}")
 	key(left)
-inside percent: 
-	insert("%%") 
+[inside] angles:
+	insert("<>")
+	key(left)
+inside percent:
+	insert("%%")
 	key(left)
 inside quotes:
 	insert('""')
 	key(left)
-angle that: 
+angle that:
     text = edit.selected_text()
     user.paste("<{text}>")
-(bracket | brace) that: 
+(bracket | brace) that:
     text = edit.selected_text()
     user.paste("{{{text}}}")
-(parens | args) that: 
+(parens | args) that:
     text = edit.selected_text()
     user.paste("({text})")
-percent that: 
+percent that:
     text = edit.selected_text()
     user.paste("%{text}%")
 quote that:
