@@ -104,3 +104,8 @@ class edit_actions:
     def page_up():
         with normal_mode():
             actions.key('ctrl-d')
+
+    def jump_line(n: int):
+        with normal_mode():
+            actions.insert(n)
+            actions.insert('G')
