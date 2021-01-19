@@ -134,8 +134,10 @@ import <user.code_libraries>:
     insert(code_libraries)
     insert(" import ")
     user.code_public_function_formatter(text)
-  
-
 
 state def main: "def main():\n"
 if name is main: "if __name__ == \"__main__\":\n"
+
+state args: "args"
+state quargs: "kwargs"
+args and quargs: "*args, **kwargs"
